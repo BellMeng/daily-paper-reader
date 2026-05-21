@@ -233,8 +233,8 @@
       const defaults = Array.isArray(utils.DEFAULT_DEEPSEEK_CHAT_MODELS)
         ? utils.DEFAULT_DEEPSEEK_CHAT_MODELS
         : [
-            'deepseek-chat',
-            'deepseek-reasoner',
+            'deepseek-v4-flash',
+            'deepseek-v4-pro',
           ];
     return sanitizeModelList(defaults, 99);
   };
@@ -1012,13 +1012,13 @@
       );
       const initialApiKey = normalizeText(currentSummaryLLM.apiKey || '');
       const initialDeepSeekModel =
-        normalizeText(currentSummaryLLM.model || '') || 'deepseek-chat';
+        normalizeText(currentSummaryLLM.model || '') || 'deepseek-v4-flash';
       const deepseekSummaryModels = getDefaultDeepSeekChatModels().map((model) => ({
         value: model,
-        label: model === 'deepseek-chat'
-          ? 'DeepSeek Chat · 默认推荐'
-          : model === 'deepseek-reasoner'
-            ? 'DeepSeek Reasoner · 推理模型'
+        label: model === 'deepseek-v4-flash'
+          ? 'DeepSeek V4 Flash · 默认推荐'
+          : model === 'deepseek-v4-pro'
+            ? 'DeepSeek V4 Pro · 高性能模型'
             : model,
       }));
 
@@ -1281,9 +1281,9 @@
       providerInputs.forEach((input) => {
         input.checked = input.value === 'deepseek';
       });
-      deepseekModelSelect.value = initialDeepSeekModel || 'deepseek-chat';
+      deepseekModelSelect.value = initialDeepSeekModel || 'deepseek-v4-flash';
       if (!deepseekModelSelect.value) {
-        deepseekModelSelect.value = 'deepseek-chat';
+        deepseekModelSelect.value = 'deepseek-v4-flash';
       }
       rerankerProfileSelect.innerHTML = RERANKER_PROFILES
         .map(
@@ -1357,7 +1357,7 @@
       const customPresetMap = {
         deepseek: {
           baseUrl: 'https://api.deepseek.com',
-          models: ['deepseek-chat', 'deepseek-reasoner'],
+          models: ['deepseek-v4-flash', 'deepseek-v4-pro'],
         },
         glm: {
           baseUrl: 'https://open.bigmodel.cn/api/paas/v4',

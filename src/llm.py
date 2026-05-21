@@ -743,10 +743,10 @@ def parse_provider_model(model_str: str) -> Tuple[str, str]:
 
     规则：第一个 '/' 之前为提供商（大小写不敏感），之后的全部为模型名（大小写敏感，允许包含 '/').
     示例：
-    - "deepseek/deepseek-chat" -> ("deepseek", "deepseek-chat")
+    - "deepseek/deepseek-v4-flash" -> ("deepseek", "deepseek-v4-flash")
     """
     if not isinstance(model_str, str) or '/' not in model_str:
-        raise ValueError("缺少模型提供商：请使用 'deepseek/model' 格式，例如 'deepseek/deepseek-chat'")
+        raise ValueError("缺少模型提供商：请使用 'deepseek/model' 格式，例如 'deepseek/deepseek-v4-flash'")
     provider, model = model_str.split('/', 1)
     return provider.lower(), model
 
