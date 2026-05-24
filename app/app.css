@@ -4657,15 +4657,10 @@ article.markdown-section {
 }
 
 .dpr-choice-field {
-  cursor: inherit;
+  cursor: default;
   padding: 2px 4px;
   min-height: 18px;
   line-height: 1.22;
-}
-
-.dpr-choice-field:hover {
-  border-color: transparent;
-  background: transparent;
 }
 
 .dpr-inline-field.is-empty {
@@ -4680,7 +4675,7 @@ article.markdown-section {
   font-size: 12px;
 }
 
-.dpr-inline-field:hover {
+.dpr-inline-field:not(.dpr-choice-field):hover {
   border-color: #b4c6eb;
   background: #f7f9ff;
 }
@@ -4695,9 +4690,15 @@ article.markdown-section {
   pointer-events: none;
 }
 
-.dpr-inline-field:hover .dpr-inline-pencil,
+.dpr-inline-field:not(.dpr-choice-field):hover .dpr-inline-pencil,
 .dpr-inline-field:focus-within .dpr-inline-pencil {
   opacity: 1;
+}
+
+.dpr-choice-field:hover,
+.dpr-choice-field:focus-within {
+  border-color: transparent;
+  background: transparent;
 }
 
 .dpr-inline-field .dpr-inline-text {
